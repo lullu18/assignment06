@@ -1,51 +1,46 @@
-// Salmon class
-class Salmon {
-    constructor(x, y) {
-        this.position = createVector(x, y);
-        this.velocity = createVector(random(-1, 1), random(-1, -3));
-        this.acceleration = createVector(0, -0.15); // 중력이 위로 작용
-        this.exploded = false;
-        this.finished = false;
-    }
+// // Salmon class
+// class Salmon {
+//     constructor(x, y) {
+//         this.pos = createVector(x, y);
+//         this.vel = createVector(random(-1, 1), random(-1, -3));
+//         this.acc = createVector(0, -0.15); // 중력이 위로 작용
+//         this.exploded = false;
+//         this.finished = false;
+//     }
 
-    run() {
-        this.update();
-        this.display();
-    }
+//     update() {
+//         if(!this.exploded){
+//             this.vel.add(this.acc);
+//             this.pos.add(this.vel);
 
-    update() {
-        if(!this.exploded){
-            this.velocity.add(this.acceleration);
-            this.position.add(this.velocity);
+//             if (this.pos.y < dividerY / 2 - 20) {
+//                 this.explode();
+//             }
 
-            if (this.position.y < dividerY / 2 - 20) {
-                this.exploded();
-            }
+//             if (this.pos.y < -50) {
+//                 this.finished = true;
+//             }
+//         }
+//     }
 
-            if (this.position.y < -50) {
-                this.finish = true;
-            }
-        }
-    }
+//     show() {
+//         if (!this.exploded){
+//             noStroke();
+//             textSize(32);
+//             text("🐟", this.pos.x, this.pos.y);
+//         }
+//     }
 
-    display() {
-        if (!this.exploded){
-            noStroke();
-            textSize(32);
-            text("🐟", this.pos.x, this.pos.y);
-        }
-    }
+//     explode() {
+//         this.exploded = true;
+//         this.finished = true;
 
-    explode() {
-        this.exploded = true;
-        this.finished = true;
+//         let ps = new ParticleSystem(this.pos.copy());
 
-        let sr = new SalmonRoe(this.position.copy());
+//         for (let i = 0; i < 60; i++){
+//             ps.addParticle();
+//         }
 
-        for (let i = 0; i < 60; i++){
-            sr.addSalmon();
-        }
-
-        systems.push(sr);
-    }
-}
+//         systems.push(ps);
+//     }
+// }
